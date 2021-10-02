@@ -1,1 +1,43 @@
-<p>restaurant works!</p>
+<div class="mainDiv">
+    <table cellspacing="7px">
+        <tr>
+            <td><label for="Restaurant-names">Restaurant List: </label></td>
+            <td><select name="Restaurant Names" id="restaurant-names"></select></td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="addRestaurant()" class="addButton">Add Restaurant</button>
+            </td>
+            <td>
+                <button class="route-to-menu">Menu</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<script>
+    var names_array = {
+    ValueA : 'Chinese Chow Chow',
+    ValueB : 'South Indian Mix',
+    ValueC : 'Northan Tadka'
+};
+
+var select = document.getElementById("restaurant-names");
+for(index in names_array) {
+    select.options[select.options.length] = new Option(names_array[index], index);
+}
+
+function addRestaurant(){
+    let nameInput = prompt("Enter Restaurent: ", "Enter Here !");
+    if(nameInput == null || nameInput == "" || nameInput == "Enter Here !") alert("cancelled");
+    else {
+        var names = document.getElementById("restaurant-names");
+        var option = document.createElement("OPTION");
+        option.innerHTML = nameInput;
+        option.value = nameInput;
+        names.options.add(option);
+    }
+}
+       
+</script>

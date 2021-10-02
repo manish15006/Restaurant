@@ -1,0 +1,27 @@
+.mainDiv{
+    background-color: black;
+    color: white;
+    font-family: calibri;
+    font-size: 18px;
+    -ms-flex-align: center;
+}
+
+.addButton{
+    background-color: green;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    height: auto;
+    width: auto;
+    border-radius: 10px;
+}
+
+.route-to-menu{
+    background-color: blue;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    height: auto;
+    width: auto;
+    border-radius: 10px;
+}
