@@ -1,1 +1,60 @@
-<p>menu works!</p>
+<div *ngIf="userAdmin">
+    <button class="btn btn-primary btn-sm mt-1 mb-1 float-right" (click)="open(addItemModal)">Add Item</button>
+</div>
+    <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
+    <thead>
+      <tr>
+        <th>Item No</th>
+        <th>Item Name</th>
+        <th>Item Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let item of selItems">
+           <td>{{item.itemId}}</td>
+           <td>{{item.itemName}}</td>
+           <td>{{item.itemPrice}}</td>
+            <td>
+                <div *ngIf="userAdmin">
+                    <div class="row">
+                        <div class="col-2">
+                            <button class="btn btn-sm btn-primary" (click)="setEditItemModal(item)">Edit</button>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-sm btn-primary" (click)="deleteItem(item)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </td>
+       </tr>
+    </tbody>
+  </table>
+<ng-template #addItemModal let-modal id="addItemModal">
+    <div class="modal-header">
+        <h1 class="modal-title text-primary">Add Item</h1>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">X</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <input matInput placeholder="Item No" [(ngModel)]='this.addItemno' value="{{this.addItemno}}"><br/>
+        <input matInput placeholder="Item Name" [(ngModel)]='this.addItemname' value="{{this.addItemname}}"><br/>    
+        <input matInput placeholder="Item Price" [(ngModel)]='this.addItemPrice' value="{{this.addItemPrice}}">  <br/>    
+        <button class="btn btn-primary btn-sm" (click)="addItem()">Add Item</button>
+    </div>
+</ng-template>
+<ng-template #editItemModal let-modal id="editItemModal">
+    <div class="modal-header">
+        <h1 class="modal-title text-primary">Edit Item</h1>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">X</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <input matInput placeholder="Item No" [(ngModel)]='this.editItemno' value="{{this.editItemno}}"><br/>
+        <input matInput placeholder="Item Name" [(ngModel)]='this.editItemname' value="{{this.editItemname}}"><br/>    
+        <input matInput placeholder="Item Price" [(ngModel)]='this.editItemPrice' value="{{this.editItemPrice}}">  <br/>    
+        <button class="btn btn-primary btn-sm" (click)="editItem()">Edit Item</button>
+    </div>
+</ng-template>
